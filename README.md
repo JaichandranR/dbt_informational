@@ -64,7 +64,7 @@ dbt run-operation drop_table --args '{"table_name": "my_schema.my_table"}'
 If you are using DBT Cloud, you can schedule a job that runs a SQL file or a DBT operation to drop tables on a regular basis. This method is useful for maintenance tasks such as cleaning up temporary tables or archiving old data.
 
 
-DBT and Iceberg Knowledge Transition Sessions: Mike conducted several DBT and Iceberg knowledge transition sessions to support internal teams, ensuring they were equipped with the technical expertise needed to adopt these technologies effectively.
+Automatic CKMS Certificate Creation/Update in Kubernetes: Mike implemented an automatic CKMS certificate creation and update process within the Kubernetes (CFQ) environment for the Cosmos project, ensuring secure and streamlined certificate management.
 
-What: Mike conducted multiple DBT and Iceberg knowledge transition sessions for internal teams, helping them enhance their understanding and capability in using these technologies.
-How: By designing comprehensive training materials and leading interactive sessions, Mike provided clear and actionable guidance, ensuring teams could quickly adopt DBT and Iceberg in their workflows, improving their efficiency and technical proficiency.
+What: Mike developed an automated process for CKMS certificate creation and updates in Kubernetes (CFQ) for the Cosmos project, enhancing security and operational efficiency.
+How: By automating the certificate management process, Mike ensured timely updates and secure certificate handling, reducing manual intervention and minimizing risks of certificate expiration, ultimately improving the reliability and security of the Cosmos infrastructure.
