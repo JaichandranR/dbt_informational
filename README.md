@@ -66,12 +66,7 @@ If you are using DBT Cloud, you can schedule a job that runs a SQL file or a DBT
 Conclusion
 Choosing the right method to drop tables in DBT depends on your project's complexity, your workflow needs, and the environment in which you are operating. Hooks and custom materializations are good for tightly integrated DBT workflows, whereas operations and DBT Cloud jobs provide more flexibility for administrative tasks.
 
-Engagement in Power-Up & Jump Start Sessions: Mike actively participated in power-up and jump-start sessions during the alpha release, providing technical insights that helped multiple teams accelerate their progress. His involvement ensured teams were equipped with the knowledge and support needed to meet their technical goals effectively.
+Customer-First Approach in Strategic Initiatives: Mike consistently adopted a customer-first approach, helping teams navigate critical transformation and strategic initiatives like the AWS migration and DBT/Kestra migration. His efforts ensured smooth transitions while keeping customer needs at the forefront.
 
-What: Mike engaged in several power-up and jump-start sessions, delivering essential technical insights to multiple teams during the alpha release.
-How: By leading these sessions and sharing his expertise, Mike enabled teams to quickly ramp up on technical requirements, fostering collaboration and driving progress towards meeting release objectives. His contributions were key to ensuring that teams had the guidance necessary for successful implementation.
-
-Coordination and Consolidation for Leadership All-Hands Deck: Mike played a key role in coordinating and consolidating updates for each leadership all-hands deck meeting, ensuring that the team’s status and progress were accurately represented.
-
-What: Mike coordinated and consolidated the team's status updates for every leadership all-hands deck meeting, ensuring a unified and clear presentation of progress.
-How: By gathering inputs from various teams, organizing the information, and aligning it with leadership goals, Mike ensured that the updates were comprehensive and well-structured, enabling seamless communication and decision-making during the meetings.
+What: Mike supported various customer-focused transformation initiatives, including the AWS and DBT/Kestra migrations, ensuring seamless implementation aligned with customer goals.
+How: By prioritizing customer needs, Mike led the technical execution of these migrations, providing tailored guidance and solutions that facilitated smooth transitions, minimized disruptions, and ensured the successful adoption of new technologies for improved performance and efficiency.
