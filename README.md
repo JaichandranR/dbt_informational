@@ -70,3 +70,8 @@ Engagement in Power-Up & Jump Start Sessions: Mike actively participated in powe
 
 What: Mike engaged in several power-up and jump-start sessions, delivering essential technical insights to multiple teams during the alpha release.
 How: By leading these sessions and sharing his expertise, Mike enabled teams to quickly ramp up on technical requirements, fostering collaboration and driving progress towards meeting release objectives. His contributions were key to ensuring that teams had the guidance necessary for successful implementation.
+
+Coordination and Consolidation for Leadership All-Hands Deck: Mike played a key role in coordinating and consolidating updates for each leadership all-hands deck meeting, ensuring that the team’s status and progress were accurately represented.
+
+What: Mike coordinated and consolidated the team's status updates for every leadership all-hands deck meeting, ensuring a unified and clear presentation of progress.
+How: By gathering inputs from various teams, organizing the information, and aligning it with leadership goals, Mike ensured that the updates were comprehensive and well-structured, enabling seamless communication and decision-making during the meetings.
