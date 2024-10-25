@@ -63,7 +63,8 @@ dbt run-operation drop_table --args '{"table_name": "my_schema.my_table"}'
 4. Scheduled Jobs in DBT Cloud
 If you are using DBT Cloud, you can schedule a job that runs a SQL file or a DBT operation to drop tables on a regular basis. This method is useful for maintenance tasks such as cleaning up temporary tables or archiving old data.
 
-Conclusion
-Choosing the right method to drop tables in DBT depends on your project's complexity, your workflow needs, and the environment in which you are operating. Hooks and custom materializations are good for tightly integrated DBT workflows, whereas operations and DBT Cloud jobs provide more flexibility for administrative tasks.
 
-Mike actively led key initiatives, including engaging in jump-start sessions and power-ups, where he provided technical insights to multiple teams. He consistently adopted a customer-first approach, supporting strategic transformations like AWS and DBT/Kestra migrations. Mike collaborated closely with architects and tech leads to design the architecture for the Impact Explorer and supported the GRC team with technical guidance. His commitment to high-quality business deliverables ensured seamless integration of AWS-based COSMOS datasets and maintained business efficiency. Through his proactive involvement, Mike contributed significantly to improving project outcomes and customer satisfaction.
+DBT and Iceberg Knowledge Transition Sessions: Mike conducted several DBT and Iceberg knowledge transition sessions to support internal teams, ensuring they were equipped with the technical expertise needed to adopt these technologies effectively.
+
+What: Mike conducted multiple DBT and Iceberg knowledge transition sessions for internal teams, helping them enhance their understanding and capability in using these technologies.
+How: By designing comprehensive training materials and leading interactive sessions, Mike provided clear and actionable guidance, ensuring teams could quickly adopt DBT and Iceberg in their workflows, improving their efficiency and technical proficiency.
