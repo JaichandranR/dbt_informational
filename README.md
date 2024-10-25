@@ -66,11 +66,7 @@ If you are using DBT Cloud, you can schedule a job that runs a SQL file or a DBT
 Conclusion
 Choosing the right method to drop tables in DBT depends on your project's complexity, your workflow needs, and the environment in which you are operating. Hooks and custom materializations are good for tightly integrated DBT workflows, whereas operations and DBT Cloud jobs provide more flexibility for administrative tasks.
 
+Engagement in Power-Up & Jump Start Sessions: Mike actively participated in power-up and jump-start sessions during the alpha release, providing technical insights that helped multiple teams accelerate their progress. His involvement ensured teams were equipped with the knowledge and support needed to meet their technical goals effectively.
 
-I just wanted to take a moment to recognize and appreciate all the hard work you’ve been putting in. Your technical skills and problem-solving abilities have been incredibly helpful, and I’ve personally learned a lot from working alongside you. Whether it’s tackling a tricky issue or offering guidance, you always seem to have a solution that moves us forward.
-
-It’s great to have someone like you on the team who’s not only knowledgeable but also approachable. Your willingness to help out and share your expertise makes a big difference in how smoothly we work together.
-
-I wanted to take a moment to acknowledge the great work you’ve been doing. Your technical expertise and the way you approach problems have really stood out to me. It’s clear that you bring a lot of value to the team, and I’ve really appreciated your support and insights during our projects.
-
-You’re always willing to lend a hand or share your knowledge, which has made a real difference in keeping things running smoothly. It’s motivating to work alongside someone who is not only highly skilled but also so easy to collaborate with.
+What: Mike engaged in several power-up and jump-start sessions, delivering essential technical insights to multiple teams during the alpha release.
+How: By leading these sessions and sharing his expertise, Mike enabled teams to quickly ramp up on technical requirements, fostering collaboration and driving progress towards meeting release objectives. His contributions were key to ensuring that teams had the guidance necessary for successful implementation.
