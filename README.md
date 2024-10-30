@@ -1,4 +1,18 @@
-# dbt_informational
+{{ config(
+    materialized='table',
+    partition_by=[
+        {'transform': 'year', 'column': 'your_timestamp_column'},
+        {'transform': 'month', 'column': 'your_timestamp_column'},
+        {'transform': 'day', 'column': 'your_timestamp_column'}
+    ]
+) }}
+
+SELECT
+    *
+FROM
+    {{ ref('your_source_table') }}
+    
+    # dbt_informational
 dbt_informational
 
 Dropping a table in DBT can be managed in various ways, depending on your requirements for maintaining data quality and schema changes. Here are some methods you can consider to include a drop table operation within your DBT project:
@@ -62,17 +76,5 @@ Copy code
 dbt run-operation drop_table --args '{"table_name": "my_schema.my_table"}'
 
 
-{{ config(
-    materialized='table',
-    partition_by=[
-        {'transform': 'year', 'column': 'your_timestamp_column'},
-        {'transform': 'month', 'column': 'your_timestamp_column'},
-        {'transform': 'day', 'column': 'your_timestamp_column'}
-    ]
-) }}
 
-SELECT
-    *
-FROM
-    {{ ref('your_source_table') }}
 
