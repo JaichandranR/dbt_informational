@@ -60,14 +60,6 @@ You can then call this operation from the command line:
 bash
 Copy code
 dbt run-operation drop_table --args '{"table_name": "my_schema.my_table"}'
-4. Scheduled Jobs in DBT Cloud
-If you are using DBT Cloud, you can schedule a job that runs a SQL file or a DBT operation to drop tables on a regular basis. This method is useful for maintenance tasks such as cleaning up temporary tables or archiving old data.
-
-
-Automatic CKMS Certificate Creation/Update in Kubernetes: Mike implemented an automatic CKMS certificate creation and update process within the Kubernetes (CFQ) environment for the Cosmos project, ensuring secure and streamlined certificate management.
-
-What: Mike developed an automated process for CKMS certificate creation and updates in Kubernetes (CFQ) for the Cosmos project, enhancing security and operational efficiency.
-How: By automating the certificate management process, Mike ensured timely updates and secure certificate handling, reducing manual intervention and minimizing risks of certificate expiration, ultimately improving the reliability and security of the Cosmos infrastructure.
 
 
 {{ config(
