@@ -68,3 +68,19 @@ Automatic CKMS Certificate Creation/Update in Kubernetes: Mike implemented an au
 
 What: Mike developed an automated process for CKMS certificate creation and updates in Kubernetes (CFQ) for the Cosmos project, enhancing security and operational efficiency.
 How: By automating the certificate management process, Mike ensured timely updates and secure certificate handling, reducing manual intervention and minimizing risks of certificate expiration, ultimately improving the reliability and security of the Cosmos infrastructure.
+
+
+{{ config(
+    materialized='table',
+    partition_by=[
+        {'transform': 'year', 'column': 'your_timestamp_column'},
+        {'transform': 'month', 'column': 'your_timestamp_column'},
+        {'transform': 'day', 'column': 'your_timestamp_column'}
+    ]
+) }}
+
+SELECT
+    *
+FROM
+    {{ ref('your_source_table') }}
+
