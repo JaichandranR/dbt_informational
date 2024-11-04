@@ -1,0 +1,38 @@
+POC Summary: Registering Tables in Trino
+Objective
+This POC aims to explore and validate the process of registering tables within the Trino environment, focusing on setup, access control, and best practices. By the end, we should have a clear, repeatable approach for registering and managing tables efficiently across catalogs and schemas.
+
+Goals
+Evaluate Registration Workflow: Test and document the steps for registering tables within specific catalogs and schemas in Trino.
+Access Control Configuration: Define and validate the use of access control rules, including schema and table-level permissions.
+Wildcard and Regex Matching: Test the use of wildcards and regex in table registration to support dynamic access management.
+Documentation of Best Practices: Summarize best practices for seamless table registration and management.
+Key Components
+Catalogs and Schemas:
+
+Verify the correct setup and organization of catalogs and schemas in Trino.
+Test configurations for specific schema patterns (e.g., ^.+_dev_[a-zA-Z0-9_]{3,25}$) to ensure they meet business and security requirements.
+Table Naming and Patterns:
+
+Establish a consistent naming convention for tables to facilitate dynamic access management.
+Test patterns such as .*_sharedteam2$ for table registration and access control, validating regex behavior.
+Access Control Rules:
+
+Implement access control using Trino’s file-based security configurations.
+Test and validate privileges for specific user groups, schemas, and tables using patterns and regular expressions.
+Examples of patterns tested:
+Schema pattern: ^team1_share_prototype$
+Table pattern: .*_sharedteam2$ (tables ending with _sharedteam2)
+Testing and Validation:
+
+Document the steps and results of tests for each configuration scenario.
+Note any limitations or caveats encountered, such as unsupported wildcard behavior or specific requirements for regex syntax.
+Best Practices:
+
+Use descriptive table names that align with access control rules.
+Limit regex usage in table patterns for simplicity and performance.
+Regularly review and update access control configurations to align with organizational changes.
+Outcomes and Next Steps
+Documentation: A fully documented process for table registration in Trino, including examples of working configurations.
+Recommendations: Guidance on naming conventions, schema organization, and access management.
+Future Work: Explore integration with additional tools for automated table registration and access management.
