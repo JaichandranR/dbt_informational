@@ -1,3 +1,7 @@
+The source control process manages the lifecycle of code changes from development to production deployment. Developers create or modify code in isolated feature branches within a version control system like Git. Changes undergo peer review via pull or merge requests to ensure compliance with coding standards and functionality. Automated tests are executed through CI pipelines to validate changes before merging into main or staging branches. Once merged, code is packaged into deployable artifacts (e.g., Docker images) and stored in repositories such as JFrog or Nexus. These artifacts are deployed to pre-production environments (e.g., QA, UAT) for testing using infrastructure-as-code tools like Terraform or Helm. Upon successful UAT testing, the changes are approved and deployed to production using CI/CD tools like Jenkins. Post-deployment, monitoring and metrics analysis validate system performance, with rollback mechanisms available for quick issue resolution. This process ensures controlled and reliable deployments.
+
+
+
 change control process
 
 Explanation for Point 1 and Point 2
