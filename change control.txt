@@ -1,1 +1,37 @@
 
+# Automatically detect folders under apitables
+TARGET_FOLDERS := $(shell find apitables -mindepth 1 -maxdepth 1 -type d -exec basename {} \;)
+
+# Run all dbt commands in sequence
+dbt_run:
+	@echo "Detected folders under apitables: $(TARGET_FOLDERS)"
+	@echo "Starting dbt runs in three stages..."
+
+	# Stage 1: Run the main SQL file for each folder
+	@for folder in $(TARGET_FOLDERS); do \
+		if [ -f apitables/$$folder/$$folder.sql ]; then \
+			echo "Running dbt for the main SQL file: $$folder.sql..."; \
+			dbt run --profiles-dir $(DBT_PROFILES_DIR) --project-dir $(DBT_PROJECT_DIR) --profile $(DBT_PROFILE) --target $(DBT_TARGET) \
+				$(DBT_STATE_MODIFIED_FLAGS) $(DBT_DEFER_FLAGS) --select apitables/$$folder/$$folder.sql; \
+		else \
+			echo "Main SQL file not found for folder: $$folder. Skipping..."; \
+		fi; \
+	done
+
+	# Stage 2: Run the remaining files in each folder
+	@for folder in $(TARGET_FOLDERS); do \
+		if [ -d apitables/$$folder ]; then \
+			echo "Running dbt for the remaining models in folder: $$folder..."; \
+			dbt run --profiles-dir $(DBT_PROFILES_DIR) --project-dir $(DBT_PROJECT_DIR) --profile $(DBT_PROFILE) --target $(DBT_TARGET) \
+				$(DBT_STATE_MODIFIED_FLAGS) $(DBT_DEFER_FLAGS) --select apitables/$$folder --exclude apitables/$$folder/$$folder.sql; \
+		else \
+			echo "Folder apitables/$$folder does not exist. Skipping..."; \
+		fi; \
+	done
+
+	# Stage 3: Run all other models, excluding the apitables folder
+	@echo "Running dbt for all other models, excluding apitables folder..."
+	dbt run --profiles-dir $(DBT_PROFILES_DIR) --project-dir $(DBT_PROJECT_DIR) --profile $(DBT_PROFILE) --target $(DBT_TARGET) \
+		$(DBT_STATE_MODIFIED_FLAGS) $(DBT_DEFER_FLAGS) --exclude apitables
+
+	@echo "Completed all dbt runs."
