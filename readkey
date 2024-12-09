@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# File containing all key IDs
+KEYS_FILE="kms_keys.txt"
+
+# Output results
+RESULTS_FILE="kms_key_specs.txt"
+
+# Clear previous results
+> $RESULTS_FILE
+
+# Iterate over each key and describe it
+while read -r KEY_ID; do
+    echo "Checking key: $KEY_ID"
+    KEYSPEC=$(aws kms describe-key --key-id "$KEY_ID" --query "KeyMetadata.KeySpec" --output text)
+    
+    if [ "$KEYSPEC" == "SYMMETRIC_DEFAULT" ]; then
+        echo "$KEY_ID: SYMMETRIC_DEFAULT" >> $RESULTS_FILE
+    else
+        echo "$KEY_ID: NOT SYMMETRIC_DEFAULT ($KEYSPEC)" >> $RESULTS_FILE
+    fi
+done < $KEYS_FILE
+
+echo "Results saved to $RESULTS_FILE"
