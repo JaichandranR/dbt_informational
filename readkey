@@ -3,8 +3,8 @@
 # File containing all key IDs
 KEYS_FILE="kms_keys.txt"
 
-# Output results
-RESULTS_FILE="kms_key_specs.txt"
+# Output results file
+RESULTS_FILE="kms_key_descriptions.txt"
 
 # Generate the keys file if it doesn't exist
 if [ ! -f "$KEYS_FILE" ]; then
@@ -17,24 +17,19 @@ fi
 
 # Iterate over each key and describe it
 while read -r KEY_ID; do
-    echo "Checking key: $KEY_ID"
+    echo "Fetching details for key: $KEY_ID" | tee -a $RESULTS_FILE
     
-    # Attempt to describe the key
-    DESCRIBE_OUTPUT=$(aws kms describe-key --key-id "$KEY_ID" --output json 2>/dev/null)
-
-    if [ -n "$DESCRIBE_OUTPUT" ]; then
-        # Extract KeySpec using jq
-        KEYSPEC=$(echo "$DESCRIBE_OUTPUT" | jq -r '.KeyMetadata.KeySpec')
-        
-        # Log the result
-        if [ "$KEYSPEC" == "SYMMETRIC_DEFAULT" ]; then
-            echo "$KEY_ID: SYMMETRIC_DEFAULT" >> $RESULTS_FILE
-        else
-            echo "$KEY_ID: NOT SYMMETRIC_DEFAULT ($KEYSPEC)" >> $RESULTS_FILE
-        fi
+    # Get the full key description
+    DESCRIBE_OUTPUT=$(aws kms describe-key --key-id "$KEY_ID" --output json 2>&1)
+    
+    if [ $? -eq 0 ]; then
+        echo "$DESCRIBE_OUTPUT" | tee -a $RESULTS_FILE
     else
-        echo "$KEY_ID: ERROR (Unable to describe key)" >> $RESULTS_FILE
+        echo "Error fetching details for key: $KEY_ID" | tee -a $RESULTS_FILE
+        echo "$DESCRIBE_OUTPUT" | tee -a $RESULTS_FILE
     fi
+    
+    echo "----------------------------------------" >> $RESULTS_FILE
 done < $KEYS_FILE
 
 echo "Results saved to $RESULTS_FILE"
