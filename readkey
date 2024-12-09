@@ -19,16 +19,17 @@ fi
 while read -r KEY_ID; do
     echo "Checking key: $KEY_ID"
     
-    # Get KeySpec from describe-key
-    KEYSPEC=$(aws kms describe-key --key-id "$KEY_ID" --query "KeyMetadata.KeySpec" --output text 2>/dev/null)
-    
-    # Check if the key is SYMMETRIC_DEFAULT or not
-    if [ "$KEYSPEC" == "SYMMETRIC_DEFAULT" ]; then
-        echo "$KEY_ID: SYMMETRIC_DEFAULT" >> $RESULTS_FILE
-    elif [ "$KEYSPEC" == "" ]; then
-        echo "$KEY_ID: ERROR (Unable to describe key or no KeySpec found)" >> $RESULTS_FILE
+    # Attempt to describe the key
+    DESCRIBE_OUTPUT=$(aws kms describe-key --key-id "$KEY_ID" 2>&1)
+    if echo "$DESCRIBE_OUTPUT" | grep -q "KeySpec"; then
+        KEYSPEC=$(echo "$DESCRIBE_OUTPUT" | jq -r '.KeyMetadata.KeySpec')
+        if [ "$KEYSPEC" == "SYMMETRIC_DEFAULT" ]; then
+            echo "$KEY_ID: SYMMETRIC_DEFAULT" >> $RESULTS_FILE
+        else
+            echo "$KEY_ID: NOT SYMMETRIC_DEFAULT ($KEYSPEC)" >> $RESULTS_FILE
+        fi
     else
-        echo "$KEY_ID: NOT SYMMETRIC_DEFAULT ($KEYSPEC)" >> $RESULTS_FILE
+        echo "$KEY_ID: ERROR (Unable to describe key: $DESCRIBE_OUTPUT)" >> $RESULTS_FILE
     fi
 done < $KEYS_FILE
 
