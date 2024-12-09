@@ -6,16 +6,27 @@ KEYS_FILE="kms_keys.txt"
 # Output results
 RESULTS_FILE="kms_key_specs.txt"
 
+# Generate the keys file if it doesn't exist
+if [ ! -f "$KEYS_FILE" ]; then
+    echo "Generating $KEYS_FILE..."
+    aws kms list-keys --query "Keys[].KeyId" --output text > $KEYS_FILE
+fi
+
 # Clear previous results
 > $RESULTS_FILE
 
 # Iterate over each key and describe it
 while read -r KEY_ID; do
     echo "Checking key: $KEY_ID"
-    KEYSPEC=$(aws kms describe-key --key-id "$KEY_ID" --query "KeyMetadata.KeySpec" --output text)
     
+    # Get KeySpec from describe-key
+    KEYSPEC=$(aws kms describe-key --key-id "$KEY_ID" --query "KeyMetadata.KeySpec" --output text 2>/dev/null)
+    
+    # Check if the key is SYMMETRIC_DEFAULT or not
     if [ "$KEYSPEC" == "SYMMETRIC_DEFAULT" ]; then
         echo "$KEY_ID: SYMMETRIC_DEFAULT" >> $RESULTS_FILE
+    elif [ "$KEYSPEC" == "" ]; then
+        echo "$KEY_ID: ERROR (Unable to describe key or no KeySpec found)" >> $RESULTS_FILE
     else
         echo "$KEY_ID: NOT SYMMETRIC_DEFAULT ($KEYSPEC)" >> $RESULTS_FILE
     fi
