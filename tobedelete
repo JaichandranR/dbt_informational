@@ -1,0 +1,4 @@
+
+properties = {
+  "partitioning": "ARRAY[TO_CHAR(date_trunc('day', CAST('assetdetails:datecreated' AS DATE)), 'YYYY-MM-DD')]"
+}
