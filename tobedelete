@@ -1,3 +1,10 @@
-properties = {
-  "partitioning": "ARRAY[date_format(date_trunc('day', CAST('assetdetails:datecreated' AS DATE)), '%Y-%m-%d')]"
+{
+  config(
+    materialized = 'incremental',
+    incremental_strategy = 'merge',
+    unique_key = 'AssetDetailsVerumIdentifier',
+    properties = {
+      "partitioning": "ARRAY[CAST(date_trunc('day', date_parse(datewarrantyend, '%Y-%m-%d')) AS varchar)]"
+    }
+  )
 }
